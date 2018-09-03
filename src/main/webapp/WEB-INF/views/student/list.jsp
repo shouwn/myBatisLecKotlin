@@ -31,7 +31,7 @@
         </thead>
         <tbody>
         <c:forEach var="student" items="${ students }">
-            <tr data-url="edit.do?id=${ student.id }">
+            <tr data-url="edit?id=${ student.id }">
                 <td>${ student.id }</td>
                 <td>${ student.studentNumber }</td>
                 <td>${ student.name }</td>
