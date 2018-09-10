@@ -2,8 +2,7 @@ package com.example.mapper
 
 import com.example.dto.Department
 import com.example.dto.Student
-import org.apache.ibatis.annotations.Mapper
-import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.*
 
 @Mapper
 interface StudentMapper{
@@ -24,13 +23,13 @@ interface StudentMapper{
     """)
     fun findAll(): List<Student>
 
-    @Select("""
+    @Insert(value = """
         INSERT student (studentNumber, name, departmentId, year)
         VALUES (#{studentNumber}, #{name}, #{departmentId}, #{year})
     """)
     fun insert(student: Student)
 
-    @Select("""
+    @Update("""
         UPDATE student SET
         studentNumber = #{studentNumber},
         name = #{name},
@@ -40,7 +39,7 @@ interface StudentMapper{
     """)
     fun update(student: Student)
 
-    @Select("""
+    @Delete("""
         DELETE FROM student WHERE id = #{id}
     """)
     fun delete(id: Int)
